@@ -11,12 +11,14 @@ export default function AddTodo({addItem}) {
     };
 
   return (
-    <div className='AddTodo'>
-        <input type="text" placeholder='Add your new todo'
+    <div className='border border-gray-300'>
+        <input
+            type="text" placeholder='Add your new todo'
             value={todoItem.title}
             onChange={(e) => setTodoItem({title: e.target.value})}
         />
-        <button onClick={onButtonClick}>ADD</button>
+        <button className="px-2 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-200"
+         onClick={onButtonClick}>ADD</button>
     </div>
   )
 }
