@@ -53,10 +53,11 @@ function App() {
   };
 
   return (
-    <div className="App" >
-      <h1 className='bg-blue-500 p-4 container mx-auto text-3xl font-bold text-white hover:underline'>todoList</h1>
-      <div className='flex items-center justify-center w-64 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500'>
-       <AddTodo addItem={addItem} />
+    <div className="App flex flex-col items-center">
+      <h1 className="bg-blue-500 p-4 container mx-auto text-3xl font-bold text-white hover:underline">todoList</h1>
+      <p className='font-mono text-xs text-gray my-2'>Todo Count: {todoItems.length}</p>
+      <div className="flex items-center justify-center w-64 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 mb-3">
+        <AddTodo addItem={addItem} />
       </div>
       {/* todoItems 반복, props 데이터 넘김 */}
       {todoItems.map((item) => (
@@ -67,9 +68,9 @@ function App() {
           updateItem={updateItem}
         />
       ))}
-      <p style={{ fontSize: '12px' }}>현재 Todo 개수: {todoItems.length}</p>
     </div>
   );
+  
 }
 
 export default App;

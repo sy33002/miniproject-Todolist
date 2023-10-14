@@ -37,18 +37,23 @@ export default function Todo({ item, deleteItem, updateItem }) {
     const { done, ...rest } = todoItem;
     const updatedItem = {
       title: e.target.value,
+      done: !done,
       ...rest,
     };
     setTodoItem(updatedItem);
     updateItem(updateItem);
   }
+
+  const textClass = done ? 'line-through' : '';
+
   return (
-    <div className='border border-gray-300'>
-      <input 
+    <div className='m-3 border-b-4'>
+      <input className='font-mono tex-sm'
         type='checkbox' 
         name={`todo${id}`} 
         id={`todo${id}`} 
         defaultChecked={done}
+        checked={done}
         onChange={checkboxEventHandler}
       />
       {/* <label htmlFor={`todo${id}`}>{title}</label> */}
@@ -58,8 +63,13 @@ export default function Todo({ item, deleteItem, updateItem }) {
         onClick={offReadOnlyMode}
         onChange={editEventHandler}
         onKeyDown={editKeyEventHandler}
-      />
-      <button onClick={onDeleteButtonClick}>DELETE</button>
+        className={`${textClass} ml-1`}
+        />
+      <button 
+        className='px-2 py-1 bg-gray-500 text-white 
+        rounded-md hover:bg-gray-800 focus:outline-none focus:ring 
+        focus:ring-gray-200 ml-2 font-mono text-xs' 
+      onClick={onDeleteButtonClick}>DELETE</button>
     </div>
   )
 }
